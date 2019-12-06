@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rate: 1
+  content: MyText
+  rent_price: MyString
+  floor_plan: MyString
+
+two:
+  rate: 1
+  content: MyText
+  rent_price: MyString
+  floor_plan: MyString
