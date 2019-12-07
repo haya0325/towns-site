@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DB設計
 
-Things you may want to cover:
+## stationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, add_index|
 
-* Ruby version
+### Association
+- has_many :comments
 
-* System dependencies
 
-* Configuration
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, add_index|
 
-* Database creation
+### Association
+- has_many :comments
 
-* Database initialization
 
-* How to run the test suite
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|rate|integer|null: false|
+|content|text|null: false|
+|rent_price|string|
+|rent_price|string|
+|station_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :stations
+- belongs_to :categories
+- belongs_to :users
 
-* Deployment instructions
 
-* ...
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|nickname|string|null: false, unique: true|
+
+### Association
+- has_many :comments
