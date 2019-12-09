@@ -40,8 +40,8 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
 |nickname|string|null: false, unique: true|
+|email|string|null: false|
 
 ### Association
 - has_many :comments
