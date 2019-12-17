@@ -6,6 +6,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, add_index|
+|image|string|null: false|
 
 ### Association
 - has_many :comments
@@ -25,11 +26,9 @@
 |------|----|-------|
 |rate|integer|null: false|
 |content|text|null: false|
-|rent_price|string|
-|rent_price|string|
-|station_id|integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|station_id|integer|null: false|
+|category_id|integer|null: false|
+|user_id|integer|null: false|
 
 ### Association
 - belongs_to :stations

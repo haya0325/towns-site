@@ -1,5 +1,10 @@
 class Comment < ApplicationRecord
-  belongs_to :stations
-  belongs_to :categories
-  belongs_to :users
+  belongs_to :station
+  belongs_to :category
+  belongs_to :user
+
+  validates :rate, presence: true
+  validates :content, presence: true
+
+
 end
