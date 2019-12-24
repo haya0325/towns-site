@@ -1,27 +1,138 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/header' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @station.name %>
-</p>
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show w-100" role="alert" style="height: 48px"><%= notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Rate</th>
-      <th>Content</th>
-    </tr>
-  </thead>
+<div class="container">
+  <h1 class="my-5"><%= @station.name %></h1>
+</div>
 
-  <tbody>
-    <% @station.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.rate %></td>
-        <td><%= comment.content %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%# <%= link_to 'Edit', edit_station_path(@station) %> 
-<%= link_to 'Back', stations_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">レビュー投稿</h5>
+          <button type="button" class="btn btn-outline-success">
+            <%= link_to "投稿フォームへ", new_station_comment_path(@station.id) %>
+          </button>
+        </div>
+      </div>
+      <br/>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">平均評価</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6"><%= @categories[0].name %></div>
+              <div class="col-6">
+                <% if @each_comments_number[1].present? %>
+                    <% (@each_rate_sum[1]/@each_comments_number[1].to_f).round.times do %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                <% else %>
+                  <div>レビュー未投稿</div>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6"><%= @categories[1].name %></div>
+              <div class="col-6">
+                <% if @each_comments_number[2].present? %>
+                    <% (@each_rate_sum[2]/@each_comments_number[2].to_f).round.times do %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                <% else %>
+                  <div>レビュー未投稿</div>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6"><%= @categories[2].name %></div>
+              <div class="col-6">
+                <% if @each_comments_number[3].present? %>
+                    <% (@each_rate_sum[3]/@each_comments_number[3].to_f).round.times do %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                <% else %>
+                  <div>レビュー未投稿</div>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6"><%= @categories[3].name %></div>
+              <div class="col-6">
+                <% if @each_comments_number[4].present? %>
+                    <% (@each_rate_sum[4]/@each_comments_number[4].to_f).round.times do %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                <% else %>
+                  <div>レビュー未投稿</div>
+                <% end %>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-6"><%= @categories[4].name %></div>
+              <div class="col-6">
+                <% if @each_comments_number[5].present? %>
+                    <% (@each_rate_sum[5]/@each_comments_number[5].to_f).round.times do %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                <% else %>
+                  <div>レビュー未投稿</div>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="card-body">
+          <p>※ 平均値は小数点以下を四捨五入して算出しています。</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <% if @station.comments.present? %>
+        <% @station.comments.each do |comment| %>
+          <div class="card bg-light">
+            <div class="card-body">
+              <div class="row">
+                <h5 class="card-title col-2"><%= comment.category.name %></h5>
+                <div class="col-10">
+                  <% comment.rate.times do %>
+                    <i class="fas fa-star text-warning"></i>
+                  <% end %>
+                </div>
+              </div>
+              <p class="card-text"><%= comment.content %></p>
+              <footer class="row blockquote-footer float-right mx-1">
+                <div class="mr-3"><%= comment.created_at.strftime("%Y/%m/%d") %></div>
+                <div>投稿者 <%= comment.user.nickname %></div>
+              </footer>
+            </div>
+          </div>
+          <br/>
+        <% end %>
+      <% else %>
+        <p>レビューが投稿されていません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <a class="btn btn-secondary btn-sm mx-auto d-block" href="/" role="button" style="width: 100px;">戻る</a>
+</div>

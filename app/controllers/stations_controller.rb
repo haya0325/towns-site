@@ -10,6 +10,9 @@ class StationsController < ApplicationController
   # GET /stations/1
   # GET /stations/1.json
   def show
+    @categories = Category.all
+    @each_rate_sum = @station.comments.group(:category_id).sum(:rate)
+    @each_comments_number = @station.comments.group(:category_id).count
   end
 
   private
