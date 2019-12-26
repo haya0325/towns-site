@@ -2,12 +2,6 @@
   <a class="navbar-brand" href="/">Navbar</a>
   <% if user_signed_in? %>
     <div class="pull-right">
-      <%# <button class="btn btn-outline-success" type="button">
-        <%= link_to "レビュー投稿", select_stations_path %>
-      <%# </button>  %> 
-      <button class="btn btn-outline-success" type="button">
-        <%= link_to "お気に入り検索", categories_path %>
-      </button>
       <button class="btn btn-outline-primary" type="button">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </button>

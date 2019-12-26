@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :stations, only: [:index, :show] do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    collection do
+      get 'search'
+    end
   end
   root 'stations#index'
   resources :categories

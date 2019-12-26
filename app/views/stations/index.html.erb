@@ -1,33 +1,61 @@
 <%= render 'shared/header' %>
-<%# <p id="notice"><%= notice</p> %>
 
-<div class="p-5">
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>  
+<% if notice %>
+  <div class="alert alert-warning alert-dismissible fade show w-100" role="alert" style="height: 48px"><%= notice %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-2 px-4">
+      <h5 class="my-4">駅一覧</h5>
+      <div>
+        <% @stations.each do |station| %>
+          <div><%= link_to station.name, station_path(station.id) %><br></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="row row-eq-height">
+        <div class="col-7">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-4">駅を調べる・投稿する</h5>
+              <%= form_tag '/stations/search', method: 'get' do %>
+                <div class="row">
+                  <div class="col-9">
+                    <%= text_field_tag :word, '', class: "form-control", placeholder: "駅名を入力" %>
+                  </div>
+                  <div class="col-3">
+                    <%= submit_tag '検索', class: "btn btn-secondary btn-block", name: nil %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-4">本サイトについて</h5>
+              <p>小田急小田原線の沿線情報の共有サイトです。<br>各駅の情報の投稿・閲覧ができます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">ランキング</h5>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @stations.each do |station| %>
-        <tr>
-          <td><%= station.name %></td>
-          <td><%= link_to 'Show', station %></td>
-          <td><%= link_to 'New', new_station_comment_path(station.id) %></td>
-
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 
   <br>
 
