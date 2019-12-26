@@ -15,6 +15,15 @@ class StationsController < ApplicationController
     @each_comments_number = @station.comments.group(:category_id).count
   end
 
+  def search
+    @station = Station.find_by(name: params[:word])
+    if @station.present?
+      redirect_to "/stations/#{@station.id}"
+    else
+      redirect_to "/", notice: '駅が見つかりませんでした'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_station
