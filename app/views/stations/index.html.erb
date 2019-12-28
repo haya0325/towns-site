@@ -11,52 +11,105 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-2 px-4">
-      <h5 class="my-4">駅一覧</h5>
+      <h5 class="mb-3">駅一覧</h5>
       <div>
         <% @stations.each do |station| %>
           <div><%= link_to station.name, station_path(station.id) %><br></div>
         <% end %>
       </div>
     </div>
-    <div class="col-10">
-      <div class="row row-eq-height">
-        <div class="col-7">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title mb-4">駅を調べる・投稿する</h5>
-              <%= form_tag '/stations/search', method: 'get' do %>
-                <div class="row">
-                  <div class="col-9">
-                    <%= text_field_tag :word, '', class: "form-control", placeholder: "駅名を入力" %>
-                  </div>
-                  <div class="col-3">
-                    <%= submit_tag '検索', class: "btn btn-secondary btn-block", name: nil %>
-                  </div>
-                </div>
-              <% end %>
+
+    <div class="col-7">
+      <div class="card">
+        <div class="card-body pb-3">
+          <h4 class="card-title mb-5">駅を調べる・投稿する</h4>
+          <%= form_tag '/stations/search', method: 'get' do %>
+            <div class="row my-5">
+              <div class="col-9">
+                <%= text_field_tag :word, '', class: "form-control", placeholder: "駅名を入力" %>
+              </div>
+              <div class="col-3">
+                <%= submit_tag '検索', class: "btn btn-secondary btn-block", name: nil %>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-5">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title mb-4">本サイトについて</h5>
-              <p>小田急小田原線の沿線情報の共有サイトです。<br>各駅の情報の投稿・閲覧ができます。</p>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">ランキング</h5>
+          <h4 class="card-title mb-4">評価ランキング</h4>
+          <table class="table my-5">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">交通</th>
+                <th scope="col">商業施設</th>
+                <th scope="col">娯楽</th>
+                <th scope="col">治安</th>
+                <th scope="col">自然環境</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[0], commercial_ranking: @commercial_ranking[0], entertainment_ranking: @entertainment_ranking[0], security_ranking: @security_ranking[0], nature_ranking: @nature_ranking[0] %>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[1], commercial_ranking: @commercial_ranking[1], entertainment_ranking: @entertainment_ranking[1], security_ranking: @security_ranking[1], nature_ranking: @nature_ranking[1] %>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[2], commercial_ranking: @commercial_ranking[2], entertainment_ranking: @entertainment_ranking[2], security_ranking: @security_ranking[2], nature_ranking: @nature_ranking[2] %>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[3], commercial_ranking: @commercial_ranking[3], entertainment_ranking: @entertainment_ranking[3], security_ranking: @security_ranking[3], nature_ranking: @nature_ranking[3] %>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[4], commercial_ranking: @commercial_ranking[4], entertainment_ranking: @entertainment_ranking[4], security_ranking: @security_ranking[4], nature_ranking: @nature_ranking[4] %>
+              </tr>
+            </tbody>
+          </table>
+          <p>各カテゴリーの平均評価が高い順に表示しています。</p>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="container">
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-4">本サイトについて</h5>
+          <p>小田急小田原線の沿線情報の共有サイトです。<br>各駅の情報の投稿・閲覧ができます。</p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title mb-4">カテゴリーについて</h5>
+          <div class="mb-3">
+            <div class="mb-1"><strong>交通</strong></div>
+            <p class="card-text">電車やバス等の交通機関の利便性を示しています。</p>
+          </div>
+          <div class="mb-3"> 
+            <div class="mb-1"><strong>商業施設</strong></div>
+            <p class="card-text">飲食店やスーパーマーケット、コンビニ等の商業施設の充実度を示しています。</p>
+          </div>
+          <div class="mb-3"> 
+            <div class="mb-1"><strong>娯楽</strong></div>
+            <p class="card-text">映画、スポーツなどレジャー施設の充実度を示しています。</p>
+          </div>
+          <div class="mb-3"> 
+            <div class="mb-1"><strong>治安</strong></div>
+            <p class="card-text">治安の良さを示しています。</p>
+          </div>
+          <div> 
+            <div class="mb-1"><strong>自然環境</strong></div>
+            <p class="card-text">公園など自然環境の多さを示しています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <br>
 
-</div>
+
+
+

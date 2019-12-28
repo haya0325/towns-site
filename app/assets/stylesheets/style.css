@@ -2,3 +2,12 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.no-margin {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.cell-height {
+  height: 60px;
+}
