@@ -37,45 +37,42 @@
       </div>
       <div class="card mt-4">
         <div class="card-body">
-          <h4 class="card-title mb-4">ランキング</h4>
-          <% if @all_ranking.all?{|r| r.length >= 5} %>
-            <table class="table my-5">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col">交通</th>
-                  <th scope="col">商業施設</th>
-                  <th scope="col">娯楽</th>
-                  <th scope="col">治安</th>
-                  <th scope="col">自然環境</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <%= render 'ranking', traffic_ranking: @traffic_ranking[0], commercial_ranking: @commercial_ranking[0], entertainment_ranking: @entertainment_ranking[0], security_ranking: @security_ranking[0], nature_ranking: @nature_ranking[0] %>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <%= render 'ranking', traffic_ranking: @traffic_ranking[1], commercial_ranking: @commercial_ranking[1], entertainment_ranking: @entertainment_ranking[1], security_ranking: @security_ranking[1], nature_ranking: @nature_ranking[1] %>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <%= render 'ranking', traffic_ranking: @traffic_ranking[2], commercial_ranking: @commercial_ranking[2], entertainment_ranking: @entertainment_ranking[2], security_ranking: @security_ranking[2], nature_ranking: @nature_ranking[2] %>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <%= render 'ranking', traffic_ranking: @traffic_ranking[3], commercial_ranking: @commercial_ranking[3], entertainment_ranking: @entertainment_ranking[3], security_ranking: @security_ranking[3], nature_ranking: @nature_ranking[3] %>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <%= render 'ranking', traffic_ranking: @traffic_ranking[4], commercial_ranking: @commercial_ranking[4], entertainment_ranking: @entertainment_ranking[4], security_ranking: @security_ranking[4], nature_ranking: @nature_ranking[4] %>
-                </tr>
-              </tbody>
-            </table>
-          <% else %> 
-            <p>レビューが不足しているため表示できません</p>
-          <% end %>         
+          <h4 class="card-title mb-4">評価ランキング</h4>
+          <table class="table my-5">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">交通</th>
+                <th scope="col">商業施設</th>
+                <th scope="col">娯楽</th>
+                <th scope="col">治安</th>
+                <th scope="col">自然環境</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[0], commercial_ranking: @commercial_ranking[0], entertainment_ranking: @entertainment_ranking[0], security_ranking: @security_ranking[0], nature_ranking: @nature_ranking[0] %>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[1], commercial_ranking: @commercial_ranking[1], entertainment_ranking: @entertainment_ranking[1], security_ranking: @security_ranking[1], nature_ranking: @nature_ranking[1] %>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[2], commercial_ranking: @commercial_ranking[2], entertainment_ranking: @entertainment_ranking[2], security_ranking: @security_ranking[2], nature_ranking: @nature_ranking[2] %>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[3], commercial_ranking: @commercial_ranking[3], entertainment_ranking: @entertainment_ranking[3], security_ranking: @security_ranking[3], nature_ranking: @nature_ranking[3] %>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <%= render 'ranking', traffic_ranking: @traffic_ranking[4], commercial_ranking: @commercial_ranking[4], entertainment_ranking: @entertainment_ranking[4], security_ranking: @security_ranking[4], nature_ranking: @nature_ranking[4] %>
+              </tr>
+            </tbody>
+          </table>
+          <p>各カテゴリーの平均評価が高い順に表示しています。</p>
         </div>
       </div>
     </div>
