@@ -13,7 +13,7 @@ class StationsController < ApplicationController
   def show
     @categories = Category.all
     @each_rate_sum = @station.comments.group(:category_id).sum(:rate)
-    @each_comments_number = @station.comments.group(:category_id).count
+    @each_comments_count = @station.comments.group(:category_id).count
   end
 
   def search
@@ -21,28 +21,22 @@ class StationsController < ApplicationController
     if @station.present?
       redirect_to "/stations/#{@station.id}"
     else
-      redirect_to "/", notice: '見つかりませんでした'
+      redirect_to "/", alert: '見つかりませんでした'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
   def set_station
     @station = Station.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def station_params
-    params.require(:station).permit(:name)
   end
 
   def ranking(category_id)
     hash = {}
     @stations.each do |station|
       rate_sum = Comment.where(station_id: station.id, category_id: category_id).sum(:rate)
-      count = Comment.where(station_id: station.id, category_id: category_id).count
-      if count != 0
-        rate_average = (rate_sum/count.to_f).round(1)
+      comments_count = Comment.where(station_id: station.id, category_id: category_id).count
+      if comments_count != 0
+        rate_average = (rate_sum/comments_count.to_f).round(1)
       else
         rate_average = 0
       end

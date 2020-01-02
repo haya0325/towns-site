@@ -1,0 +1,21 @@
+<li class="list-group-item">
+  <div class="row">
+    <div class="col-5"><%= category.name %></div>
+    <div class="col-7">
+      <% if comments_count.present? %>
+        <div class="row">
+          <div class="col-9">
+            <% (rate_sum/comments_count.to_f).round.times do %>
+              <i class="fas fa-star text-warning"></i>
+            <% end %>
+          </div>
+          <div class="col-3">
+            <span class="badge badge-secondary"><%= (rate_sum/comments_count.to_f).round(1) %></span>
+          </div>
+        </div>
+      <% else %>
+        <div>レビュー未投稿</div>
+      <% end %>
+    </div>
+  </div>
+</li>
