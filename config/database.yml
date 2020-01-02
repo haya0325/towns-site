@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: towns-site_production
-  username: towns-site
-  password: <%= ENV['TOWNS-SITE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
