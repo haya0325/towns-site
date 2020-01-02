@@ -1,19 +1,13 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="/">Navbar</a>
+<nav class="navbar navbar-light bg-info">
+  <a class="navbar-brand" href="/"><h3>Towns-Site</h3></a>
   <% if user_signed_in? %>
     <div class="pull-right">
-      <button class="btn btn-outline-primary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </button>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger font-weight-bold" %>
     </div>
   <% else %>
     <div class="pull-right">
-      <button class="btn btn-outline-danger" type="button">
-        <%= link_to "新規登録", new_user_registration_path %>
-      </button>
-      <button class="btn btn-outline-danger" type="button">
-        <%= link_to "ログイン", new_user_session_path %>
-      </button>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-danger font-weight-bold" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-danger font-weight-bold" %>
     </div>
   <% end %>
 </nav>

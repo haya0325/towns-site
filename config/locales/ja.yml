@@ -1,18 +1,20 @@
 ja:
-  activerecord:
-    attributes:
-      comment:
-        id: ID
-        rate: 評価
-        content: コメント
-        station: 駅
-        category: カテゴリー
-        user: 投稿者
-        created_at: 作成日
-        updated_at: 更新日
-      user: 
-        id: ID
-        email: メールアドレス
-        encrypted_password: パスワード
-        nickname: 名前
+ activerecord:
+  attributes:
+   comment:
+    id: ID
+    rate: 評価
+    content: コメント
+    station: 駅
+    category: カテゴリー
+    user: 投稿者
+    created_at: 作成日
+    updated_at: 更新日
+   user: 
+    id: ID
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: パスワード（確認用）
+    nickname: ユーザー名
+    
 
