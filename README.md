@@ -1,46 +1,36 @@
 # README
 
-# DB設計
+## アプリケーション名
+Towns-Site
 
-## stationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false, add_index|
-|image|string|null: false|
+## URL
+http://3.114.225.149
 
-### Association
-- has_many :comments
+## 概要
+住まい探しのための街の情報共有サイトです。
+それぞれの街（駅）についてレビューの投稿、閲覧ができます。また、交通利便性や商業施設の充実度など５つのカテゴリーごとにレビュー評価が高い街をランキング形式で参照できます。なお、本アプリケーションでは小田急小田原線（新宿〜小田原）の沿線情報に特化しています。
 
+## 技術一覧
+ruby/Ruby on Rails/MySQL/Github/AWS
 
-## categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false, add_index|
+## 機能一覧
+- ログイン・ログアウト機能
+- レビュー投稿機能
+- レビュー評価の平均値表示機能
+- 評価ランキング機能
+- 検索機能
 
-### Association
-- has_many :comments
+## 使用方法
 
+### レビュー投稿
+1. トップページ右上のボタンをクリックしてフォームへ進み、新規登録またはログインします。
+2. トップページ左側の駅名をクリックするか、または検索フォームより駅名を検索して駅の詳細ページへ移動します。
+3. 「投稿フォーム」ボタンより投稿フォームへ移動し、カテゴリーなどの必要事項を入力して投稿できます。
 
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|rate|integer|null: false|
-|content|text|null: false|
-|station_id|integer|null: false|
-|category_id|integer|null: false|
-|user_id|integer|null: false|
+### レビュー閲覧
+1. トップページ左側の駅名をクリックするか、または検索フォームより駅名を検索して駅の詳細ページへ移動します。
+2. レビューの閲覧、カテゴリー別の評価平均値の参照ができます。
 
-### Association
-- belongs_to :stations
-- belongs_to :categories
-- belongs_to :users
+### ランキング参照
+トップページにてカテゴリーごとのレビュー評価が高い街を参照できます。
 
-
-## usersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|nickname|string|null: false, unique: true|
-|email|string|null: false|
-
-### Association
-- has_many :comments
